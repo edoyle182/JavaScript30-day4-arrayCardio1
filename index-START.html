@@ -57,6 +57,7 @@
       }
     }); */
 
+    // rewritten utilizing ternary operators
     const ordered = inventors.sort((a,b) => a.year > b.year ? 1 : -1);
 
     console.table(ordered);
@@ -72,7 +73,25 @@
 
     // 5. Sort the inventors by years lived
 
-    
+    /* LONGform Solution
+    const oldest = inventors.sort(function(a, b) {
+      const lastGuy = a.passed - a.year;
+      const nextGuy = b.passed - b.year;
+      if(lastGuy > nextGuy) {
+        return -1;
+      } else {
+        return 1;
+      }
+    }); */
+
+    const oldest = inventors.sort(function(a, b) {
+      const lastGuy = a.passed - a.year;
+      const nextGuy = b.passed - b.year;
+      // rewritten utilizing ternary operators 
+      return lastGuy > nextGuy ? -1 : 1;
+    });
+
+    console.table(oldest);
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
